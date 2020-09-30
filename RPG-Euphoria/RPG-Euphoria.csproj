@@ -1187,6 +1187,7 @@
     <Content Include="Assets\js\spellsImg.js" />
     <Content Include="Assets\js\trap.js" />
     <Content Include="Assets\js\value.js" />
+    <Content Include="Menu.aspx" />
     <Content Include="Usuarios\Login.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1199,6 +1200,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

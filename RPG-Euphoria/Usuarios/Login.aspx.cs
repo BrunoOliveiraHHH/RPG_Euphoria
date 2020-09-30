@@ -32,6 +32,7 @@ namespace RPG_Euphoria.Usuarios
 
             if (flagPermitiUsuario > 0)
             {
+                Response.Redirect("../Menu.aspx");
             }
             else
             {
