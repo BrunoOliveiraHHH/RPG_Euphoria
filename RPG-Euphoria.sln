@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Euphoria", "RPG-Euphoria\RPG-Euphoria.csproj", "{FDCD481B-D943-4460-A178-30DC74A56BBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C8C189FF-BAD1-47DE-811E-ADB7B037B536} = {C8C189FF-BAD1-47DE-811E-ADB7B037B536}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Euphoria.Negocios", "RPG-Euphoria.Negocios\RPG-Euphoria.Negocios.csproj", "{C8C189FF-BAD1-47DE-811E-ADB7B037B536}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0669F73F-CA38-418D-B7DA-FCB9E8648EEA} = {0669F73F-CA38-418D-B7DA-FCB9E8648EEA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Euphoria.Dados", "RPG-Euphoria.Dados\RPG-Euphoria.Dados.csproj", "{0669F73F-CA38-418D-B7DA-FCB9E8648EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Euphoria.Models", "RPG-Euphoria.Models\RPG-Euphoria.Models.csproj", "{28E71915-640B-4332-9A31-9174B99EBA27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDCD481B-D943-4460-A178-30DC74A56BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDCD481B-D943-4460-A178-30DC74A56BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDCD481B-D943-4460-A178-30DC74A56BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDCD481B-D943-4460-A178-30DC74A56BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C189FF-BAD1-47DE-811E-ADB7B037B536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C189FF-BAD1-47DE-811E-ADB7B037B536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C189FF-BAD1-47DE-811E-ADB7B037B536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C189FF-BAD1-47DE-811E-ADB7B037B536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0669F73F-CA38-418D-B7DA-FCB9E8648EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0669F73F-CA38-418D-B7DA-FCB9E8648EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0669F73F-CA38-418D-B7DA-FCB9E8648EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0669F73F-CA38-418D-B7DA-FCB9E8648EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E71915-640B-4332-9A31-9174B99EBA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E71915-640B-4332-9A31-9174B99EBA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E71915-640B-4332-9A31-9174B99EBA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E71915-640B-4332-9A31-9174B99EBA27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

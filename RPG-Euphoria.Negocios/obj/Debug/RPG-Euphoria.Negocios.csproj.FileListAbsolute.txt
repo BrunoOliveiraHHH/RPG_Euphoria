@@ -1,0 +1,7 @@
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.dll
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.pdb
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.dll
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.pdb
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.dll
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.pdb
+C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.csprojResolveAssemblyReference.cache
