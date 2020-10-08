@@ -10,6 +10,8 @@ namespace RPG_Euphoria.Usuarios
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,12 +20,14 @@ namespace RPG_Euphoria.Usuarios
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             UsuariosNegocio _negocios = new UsuariosNegocio();
+            string user = txtUsuario.Text.Trim().ToString();
+            string pass = txtSenha.Text.Trim().ToString();
 
             int flagPermitiUsuario = 0;
 
-            if (!String.IsNullOrEmpty(txtUsuario.Text.Trim().ToString()) && !String.IsNullOrEmpty(txtSenha.Text.Trim().ToString()))
+            if (!String.IsNullOrEmpty(user) && !String.IsNullOrEmpty(pass))
             {
-                flagPermitiUsuario = _negocios.ValidaUsuarioLogado(txtUsuario.Text.Trim().ToString(), txtSenha.Text.Trim().ToString());
+                flagPermitiUsuario = _negocios.ValidaUsuarioLogado(user,pass);
             }
             else
             {

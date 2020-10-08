@@ -11,7 +11,17 @@ namespace RPG_Euphoria
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            carregaLinks();
+        }
 
+        private void carregaLinks()
+        {
+            btnArmadura.Visible = true;
+            btnArmaMuni.Visible = true;
+            btnHomePage.Visible = true;
+            btnItem.Visible = true;
+            btnMonstro.Visible = true;
+            btnVeiculo.Visible = true;
         }
     }
 }
