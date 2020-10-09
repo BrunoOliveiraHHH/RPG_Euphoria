@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArmasMuni.aspx" />
+    <Content Include="Assets\css\armaMuni.css" />
     <Content Include="Assets\css\back.jpg" />
     <Content Include="Assets\css\bootstrap.css" />
     <Content Include="Assets\css\download.css" />
@@ -1188,6 +1189,7 @@
     <Content Include="Assets\js\spellsImg.js" />
     <Content Include="Assets\js\trap.js" />
     <Content Include="Assets\js\value.js" />
+    <Content Include="Assets\audio\sound.wav" />
     <Content Include="Menu.aspx" />
     <Content Include="Usuarios\Login.aspx" />
     <Content Include="Web.config">
@@ -1259,9 +1261,7 @@
     <None Include="Assets\img\Cards\Y\desktop.ini" />
     <None Include="Assets\img\Cards\Z\desktop.ini" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\audio\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

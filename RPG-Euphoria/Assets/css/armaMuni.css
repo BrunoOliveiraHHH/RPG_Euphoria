@@ -1,0 +1,15 @@
+﻿.title {
+    text-align: center;
+    width: 100px;
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+.section
+{
+    width:1000px;
+    background-color:WindowFrame;
+    border: 2px solid #000;
+    height:auto;
+}

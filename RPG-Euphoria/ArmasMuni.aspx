@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>O Inicio do Fim</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="Assets/css/armaMuni.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/w3.css" />
     <link rel="shortcut icon" href="Assets/img/ico.png" type="image/x-icon" />
@@ -33,6 +33,13 @@
             </ul>
         </div>
     </div>
+    <center>
+    <div class="section">
+    
+    <div class="title">Nome<asp:TextBox runat="server" ID="txtBoxNome"></asp:TextBox></div>
+
+    </div>
+    </center>
     </form>
- </body>   
+    </body>   
 </html>
