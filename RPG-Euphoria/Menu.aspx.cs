@@ -4,24 +4,50 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using RPG_Euphoria.Negocios;
 
 namespace RPG_Euphoria
 {
     public partial class Menu : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            carregaLinks();
+            CarregaLinks();
         }
 
-        private void carregaLinks()
+        private void CarregaLinks()
         {
-            btnArmadura.Visible = true;
-            btnArmaMuni.Visible = true;
-            btnHomePage.Visible = true;
-            btnItem.Visible = true;
-            btnMonstro.Visible = true;
-            btnVeiculo.Visible = true;
+            ParametroNegocios _negocios = new ParametroNegocios();
+            string nomParametro = "ListaBtnMenu";
+            List<string> stringList = _negocios.ConsultarListaParametros(nomParametro);
+
+            foreach (string link in stringList.AsEnumerable())
+            {
+                if (!String.IsNullOrEmpty(link))
+                {
+                    switch (link)
+                    {
+                        case "ArmaMuniOFF":
+                            btnArmaMuni.Visible = true;
+                            break;
+                        case "ArmaduraOFF":
+                            btnArmadura.Visible = true;
+                            break;
+                        case "VeiculoOFF":
+                            btnVeiculo.Visible = true;
+                            break;
+                        case "ItemOFF":
+                            btnItem.Visible = true;
+                            break;
+                        case "MonstroOFF":
+                            btnMonstro.Visible = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

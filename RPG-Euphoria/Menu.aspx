@@ -18,7 +18,7 @@
         <div class="menu">
             <ul class="nav nav-tabs">
                 <li class="nav-item"><asp:HyperLink ID="btnHomePage" runat="server" 
-                        CssClass="nav-link" NavigateUrl="~/Menu.aspx" Visible="False">Home Page</asp:HyperLink></li>
+                        CssClass="nav-link" NavigateUrl="~/Menu.aspx" Visible="True">Home Page</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnArmaMuni" CssClass="nav-link" runat="server" 
                         NavigateUrl="~/ArmasMuni.aspx" Visible="False">Armas e Munição</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnArmadura" CssClass="nav-link" runat="server" 

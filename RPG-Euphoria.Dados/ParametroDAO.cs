@@ -16,7 +16,7 @@ namespace RPG_Euphoria.Dados
         private SqlConnection con = new SqlConnection(cs);
         private SqlDataReader reader = null;
 
-        public string ConsultarParametro(string nom_parametro)
+        public string ConsultarParametro(string nomParametro)
         {
             string parametro = "";
             try
@@ -26,7 +26,7 @@ namespace RPG_Euphoria.Dados
                 String query = "EXECUTE [dbo].[consultar_parametro] @nom_parametro";
                 SqlParameter parametros = new SqlParameter();
                 parametros.ParameterName = "@nom_parametro";
-                parametros.Value = nom_parametro;
+                parametros.Value = nomParametro;
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.Add(parametros);
 
@@ -49,7 +49,7 @@ namespace RPG_Euphoria.Dados
                 {
                     con.Close();
                 }
-                if( reader != null)
+                if (reader != null)
                 {
                     reader.Close();
                 }
@@ -57,5 +57,53 @@ namespace RPG_Euphoria.Dados
 
             return parametro;
         }
+
+        public List<string> ConsultarParametros(string nomParametro)
+        {
+            string parametro = "";
+            List<string> stringList = new List<string>();
+            try
+            {
+                con.Open();
+                DataTable dt = new DataTable();
+                String query = "EXECUTE [dbo].[consultar_parametro] @nom_parametro";
+                SqlParameter parametros = new SqlParameter();
+                parametros.ParameterName = "@nom_parametro";
+                parametros.Value = nomParametro;
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(parametros);
+
+                reader = cmd.ExecuteReader();
+
+                dt.Load(reader);
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        parametro = row["des_parametro"].ToString();
+                        stringList.Add(parametro);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+
+            return stringList;
+        }
     }
+
 }
