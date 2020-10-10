@@ -12,14 +12,14 @@ namespace RPG_Euphoria.Negocios
     {
         private Dados.DurabilidadeDAO _dao = new Dados.DurabilidadeDAO();
 
-        public void ListarDurabilidades(DropDownList comboBox)
+        public DropDownList ListarDurabilidades(DropDownList comboBox)
         {
-            _dao.ListarDurabilidades(comboBox);
+           return _dao.ListarDurabilidades(comboBox);
         }
 
-        public void GridDurabilidade(GridView dataGrid)
+        public GridView GridDurabilidade(GridView dataGrid)
         {
-            _dao.GridDurabilidade(dataGrid);
+           return _dao.GridDurabilidade(dataGrid);
         }
     }
 }

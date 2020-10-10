@@ -12,10 +12,13 @@ namespace RPG_Euphoria.Dados
 {
     public class ParametroDAO
     {
+        #region Members
         private static string cs = ConfigurationManager.ConnectionStrings["SQLConnectString"].ConnectionString;
         private SqlConnection con = new SqlConnection(cs);
         private SqlDataReader reader = null;
+        #endregion
 
+        #region ConsultarParametro
         public string ConsultarParametro(string nomParametro)
         {
             string parametro = "";
@@ -57,8 +60,10 @@ namespace RPG_Euphoria.Dados
 
             return parametro;
         }
+        #endregion
 
-        public List<string> ConsultarParametros(string nomParametro)
+        #region ConsultarListaParametros
+        public List<string> ConsultarListaParametros(string nomParametro)
         {
             string parametro = "";
             List<string> stringList = new List<string>();
@@ -104,6 +109,7 @@ namespace RPG_Euphoria.Dados
 
             return stringList;
         }
+        #endregion
     }
 
 }

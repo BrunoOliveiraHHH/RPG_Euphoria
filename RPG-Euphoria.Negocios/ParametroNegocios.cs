@@ -10,6 +10,7 @@ namespace RPG_Euphoria.Negocios
     public class ParametroNegocios
     {
         private ParametroDAO _dao = new ParametroDAO();
+
         public string ConsultarParametro(string nomParametro)
         {
             return _dao.ConsultarParametro(nomParametro);
@@ -17,7 +18,7 @@ namespace RPG_Euphoria.Negocios
 
         public List<string> ConsultarListaParametros(string nomParametro)
         {
-            return _dao.ConsultarParametros(nomParametro);
+            return _dao.ConsultarListaParametros(nomParametro);
         }
     }
 }

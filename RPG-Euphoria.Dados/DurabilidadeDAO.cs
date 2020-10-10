@@ -15,45 +15,89 @@ namespace RPG_Euphoria.Dados
         private static string cs = ConfigurationManager.ConnectionStrings["SQLConnectString"].ConnectionString;
         private SqlConnection con = new SqlConnection(cs);
         private ParametroDAO parametro = new ParametroDAO();
-        
-        public void ListarDurabilidades(DropDownList comboBox)
-        {
-            con.Open();
-            DataSet ds = new DataSet();
+        private SqlDataReader reader = null;
 
-            String query = parametro.ConsultarParametro("procedureListarDurabilidade");
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-            comboBox.DataTextField = "descricao";
-            comboBox.DataValueField = "id_durabilidade";
-            comboBox.DataSource = ds.Tables[0];
-            comboBox.DataBind();
-            comboBox.Items.Insert(0, new ListItem("Selecione","0"));
-            con.Close();
+        public DropDownList ListarDurabilidades(DropDownList comboBox)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                con.Open();
+
+                String query = parametro.ConsultarParametro("procedureListarDurabilidade");
+                SqlCommand cmd = new SqlCommand(query, con);
+                reader = cmd.ExecuteReader();
+                dt.Load(reader);
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    comboBox.DataTextField = "descricao";
+                    comboBox.DataValueField = "id_durabilidade";
+                    comboBox.DataSource = dt;
+                    comboBox.DataBind();
+                }
+
+                comboBox.Items.Insert(0, new ListItem("Selecione", "0"));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+
+            return comboBox;
         }
 
-        public void GridDurabilidade(GridView dataGrid) 
+        public GridView GridDurabilidade(GridView dataGrid) 
         {
-            con.Open();
-            DataSet ds = new DataSet();
-            String query = parametro.ConsultarParametro("procedureListarDurabilidade");
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-
             DataTable dt = new DataTable();
-            dt = ds.Tables[0];
 
-            dt.Columns.Remove("id_durabilidade");
-            dt.Columns["descricao"].ColumnName = "Descrição";
+            try
+            {
+                con.Open();
+                String query = parametro.ConsultarParametro("procedureListarDurabilidade");
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter da = new SqlDataAdapter();
+                reader = cmd.ExecuteReader();
+                dt.Load(reader);
 
-            dataGrid.DataSource = dt;
-            dataGrid.ShowHeader = true;
-            dataGrid.DataBind();
-            con.Close();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    dt.Columns["id_durabilidade"].ColumnName = "ID";
+                    dt.Columns["descricao"].ColumnName = "Descrição";
+                    dataGrid.DataSource = dt;
+                    dataGrid.ShowHeader = true;
+                    dataGrid.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+
+            return dataGrid;
         
         }
     }

@@ -1225,6 +1225,7 @@
     <Compile Include="Usuarios\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RPG-Euphoria.Negocios\RPG-Euphoria.Negocios.csproj">

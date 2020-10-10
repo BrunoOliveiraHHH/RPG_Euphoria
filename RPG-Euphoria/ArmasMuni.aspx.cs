@@ -10,44 +10,40 @@ namespace RPG_Euphoria
 {
     public partial class ArmasMuni : System.Web.UI.Page
     {
+        #region Members
+        private Util util = new Util();
+        private ArmasNegocio _negocios = new ArmasNegocio();
+        #endregion
+
+        #region Page_Load
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregaLinks();
+            util.CarregaLinks(btnArmaMuni, btnArmadura, btnVeiculo, btnItem, btnMonstro);
+            carregaDropDownDurabilidade();
+            carregaDropDownTipoArma();
+            carregaDropDownCalibre();
+            carregaGridViewArmaMuni();
         }
-        private void CarregaLinks()
+
+        private void carregaGridViewArmaMuni()
         {
-            ParametroNegocios _negocios = new ParametroNegocios();
-            string nomParametro = "ListaBtnMenu";
-            List<string> stringList = _negocios.ConsultarListaParametros(nomParametro);
-
-            foreach (string link in stringList.AsEnumerable())
-            {
-                if (!String.IsNullOrEmpty(link))
-                {
-                    switch (link)
-                    {
-                        case "ArmaMuniOFF":
-                            btnArmaMuni.Visible = true;
-                            break;
-                        case "ArmaduraOFF":
-                            btnArmadura.Visible = true;
-                            break;
-                        case "VeiculoOFF":
-                            btnVeiculo.Visible = true;
-                            break;
-                        case "ItemOFF":
-                            btnItem.Visible = true;
-                            break;
-                        case "MonstroOFF":
-                            btnMonstro.Visible = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
+            gridArmaMuni = _negocios.carregaGridView(gridArmaMuni);
         }
 
+        private void carregaDropDownCalibre()
+        {
+            cbxCalibreMunicao = _negocios.carregaComboBoxCalibre(cbxCalibreMunicao);
+        }      
 
+        private void carregaDropDownDurabilidade()
+        {            
+            cbxDurabilidade = _negocios.carregarComboBoxDurabilidade(cbxDurabilidade);
+        }
+
+        private void carregaDropDownTipoArma()
+        {
+            cbxTipoArma = _negocios.carregaDropDownTipoArma(cbxTipoArma);
+        }
+        #endregion
     }
 }

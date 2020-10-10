@@ -10,44 +10,13 @@ namespace RPG_Euphoria
 {
     public partial class Menu : System.Web.UI.Page
     {
+        private Util util = new Util();
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregaLinks();
+            util.CarregaLinks(btnArmaMuni, btnArmadura, btnVeiculo, btnItem, btnMonstro);
         }
 
-        private void CarregaLinks()
-        {
-            ParametroNegocios _negocios = new ParametroNegocios();
-            string nomParametro = "ListaBtnMenu";
-            List<string> stringList = _negocios.ConsultarListaParametros(nomParametro);
-
-            foreach (string link in stringList.AsEnumerable())
-            {
-                if (!String.IsNullOrEmpty(link))
-                {
-                    switch (link)
-                    {
-                        case "ArmaMuniOFF":
-                            btnArmaMuni.Visible = true;
-                            break;
-                        case "ArmaduraOFF":
-                            btnArmadura.Visible = true;
-                            break;
-                        case "VeiculoOFF":
-                            btnVeiculo.Visible = true;
-                            break;
-                        case "ItemOFF":
-                            btnItem.Visible = true;
-                            break;
-                        case "MonstroOFF":
-                            btnMonstro.Visible = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-        }
+        
     }
 }

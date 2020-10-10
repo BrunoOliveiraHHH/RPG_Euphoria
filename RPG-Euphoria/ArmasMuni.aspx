@@ -19,7 +19,7 @@
         <div class="menu">
             <ul class="nav nav-tabs">
                 <li class="nav-item"><asp:HyperLink ID="btnHomePage" runat="server" 
-                        CssClass="nav-link" NavigateUrl="~/Menu.aspx" Visible="False">Home Page</asp:HyperLink></li>
+                        CssClass="nav-link" NavigateUrl="~/Menu.aspx" Visible="True">Home Page</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnArmaMuni" CssClass="nav-link" runat="server" 
                         NavigateUrl="~/ArmasMuni.aspx" Visible="False">Armas e Munição</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnArmadura" CssClass="nav-link" runat="server" 
@@ -34,11 +34,28 @@
         </div>
     </div>
     <center>
-    <div class="section">
-    
-    <div class="title">Nome<asp:TextBox runat="server" ID="txtBoxNome"></asp:TextBox></div>
-
+    <div class="section" style="text-align:left;">
+    <div style="margin-left:0px; margin-top:5px;">
+    <div class="title" style="display:inline;">Nome:<asp:TextBox runat="server" ID="txtBoxNome"></asp:TextBox></div>    
+    <div class="title" style="display:inline;">Propriedades:<asp:TextBox runat="server" ID="txtBoxPropriedade"></asp:TextBox></div>
+    <div class="title" style="display:inline;">Tipo de Arma:<asp:DropDownList runat="server" ID="cbxTipoArma"></asp:DropDownList></div>    
     </div>
+    <br />
+    <div style="margin-left:0px; margin-top:5px; margin-bottom:5px;">
+    <div class="title" style="display:inline;">Custo:<asp:TextBox runat="server" ID="txtCusto"></asp:TextBox></div>
+    <div class="title" style="display:inline;">Dano:<asp:TextBox runat="server" ID="txtDadoDano"></asp:TextBox></div>
+    <div class="title" style="display:inline;margin-left: 49px;">Tipo de Dano:<asp:TextBox runat="server" ID="txtTipoDano"></asp:TextBox></div>    
+    </div>
+    <br />
+    <div style="margin-left:0px; margin-top:5px; margin-bottom:15px;">
+    <div class="title" style="display:inline;">Peso:<asp:TextBox runat="server" ID="txtPeso"></asp:TextBox></div>
+    <div class="title" style="display:inline;">Durabilidade:<asp:DropDownList runat="server" ID="cbxDurabilidade"></asp:DropDownList></div>
+    <div class="title" style="display:inline;">Calibre:<asp:DropDownList runat="server" ID="cbxCalibreMunicao"></asp:DropDownList></div>
+    </div>
+    </div>
+    <br />
+    <asp:GridView runat="server" ID="gridArmaMuni" CssClass="gridArmaMuni" BackColor="WindowFrame" Width=1500px></asp:GridView>
+    <br />
     </center>
     </form>
     </body>   

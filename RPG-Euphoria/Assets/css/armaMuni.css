@@ -1,15 +1,25 @@
-﻿.title {
+﻿.title
+{
     text-align: center;
     width: 100px;
     padding: 5px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman' , Times, serif;
     font-size: 15px;
 }
 
 .section
 {
-    width:1000px;
-    background-color:WindowFrame;
+    width: 1000px;
+    background-color: WindowFrame;
     border: 2px solid #000;
-    height:auto;
+    height: auto;
+    text-align: left;
+}
+
+.gridArmaMuni
+{
+    width: 1000px;
+    border: 2px solid #000;
+    height: auto;
+    background-color:WindowFrame;
 }
