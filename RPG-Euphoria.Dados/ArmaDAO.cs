@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using System.Data;
+using RPG_Euphoria.Models;
 
 namespace RPG_Euphoria.Dados
 {
@@ -18,6 +19,7 @@ namespace RPG_Euphoria.Dados
         private ParametroDAO parametro = new ParametroDAO();
         #endregion
 
+        #region Carrega Grid
         public GridView carregaGridArmaMuni(GridView dataGrid)
         {
             DataTable dt = new DataTable();
@@ -97,5 +99,13 @@ namespace RPG_Euphoria.Dados
             dt.Columns["observacao_arma"].ColumnName = "Tipo da Arma";
 
         }
+        #endregion
+
+        #region AdicionaArma
+        public Arma AdicionaArma(Arma arma)
+        {
+            return arma;
+        }
+        #endregion
     }
 }

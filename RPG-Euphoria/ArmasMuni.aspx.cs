@@ -45,5 +45,20 @@ namespace RPG_Euphoria
             cbxTipoArma = _negocios.carregaDropDownTipoArma(cbxTipoArma);
         }
         #endregion
+
+        protected void btnAdiciona_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnPesquisar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
