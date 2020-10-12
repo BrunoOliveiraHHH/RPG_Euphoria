@@ -17,7 +17,7 @@ namespace RPG_Euphoria.Dados
         private ParametroDAO parametro = new ParametroDAO();
         private SqlDataReader reader = null;
 
-        public DropDownList ListarDurabilidades(DropDownList comboBox)
+        public void ListarDurabilidades(DropDownList comboBox)
         {
             DataTable dt = new DataTable();
             try
@@ -36,8 +36,6 @@ namespace RPG_Euphoria.Dados
                     comboBox.DataSource = dt;
                     comboBox.DataBind();
                 }
-
-                comboBox.Items.Insert(0, new ListItem("Selecione", "0"));
             }
             catch (Exception ex)
             {
@@ -54,8 +52,6 @@ namespace RPG_Euphoria.Dados
                     reader.Close();
                 }
             }
-
-            return comboBox;
         }
 
         public GridView GridDurabilidade(GridView dataGrid) 

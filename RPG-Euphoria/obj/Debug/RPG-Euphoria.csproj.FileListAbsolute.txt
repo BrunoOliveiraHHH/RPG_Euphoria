@@ -4,5 +4,7 @@ c:\users\pmrecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphori
 c:\users\pmrecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\obj\Debug\RPG-Euphoria.pdb
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\obj\Debug\RPG-Euphoria.csprojResolveAssemblyReference.cache
 C:\Users\PMRecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Dados.dll
+C:\Users\PMRecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Models.dll
 C:\Users\PMRecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.pdb
 C:\Users\PMRecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Dados.pdb
+C:\Users\PMRecife\documents\visual studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Models.pdb

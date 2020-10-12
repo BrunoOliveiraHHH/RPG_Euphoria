@@ -11,9 +11,9 @@ namespace RPG_Euphoria.Negocios
     {
         private MunicaoDAO _dao = new MunicaoDAO();
 
-        public DropDownList carregaComboBoxCalibre(DropDownList dropDown)
+        public void carregaComboBoxCalibre(DropDownList dropDown)
         {
-            return _dao.carregaComboBoxCalibre(dropDown);
+            _dao.carregaComboBoxCalibre(dropDown);
         }
     }
 }

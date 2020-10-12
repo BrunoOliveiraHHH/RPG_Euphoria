@@ -52,19 +52,24 @@
     <div class="title" style="display:inline;">Durabilidade:<asp:DropDownList runat="server" ID="cbxDurabilidade"></asp:DropDownList></div>
     <div class="title" style="display:inline;">Calibre:<asp:DropDownList runat="server" ID="cbxCalibreMunicao"></asp:DropDownList></div>
     </div>
+    <div style="margin-left:0px; margin-top:5px; margin-bottom:15px;">
+    <asp:Label runat="server" ID="lblMensagem"></asp:Label>
+    </div>
     <center>
     <div style="margin-left:0px; margin-top:5px; margin-bottom:15px;">
     <div class="title" style="display:inline;"><asp:Button runat="server" 
             ID="btnAdiciona" Text="Adiciona Arma" onclick="btnAdiciona_Click" /> </div>
     <div class="title" style="display:inline;"><asp:Button runat="server" 
-            ID="btnExcluir" Text="Excluir Arma" onclick="btnExcluir_Click" /></asp:DropDownList></div>
+            ID="btnExcluir" Text="Excluir Arma" onclick="btnExcluir_Click" /></div>
     <div class="title" style="display:inline;"><asp:Button runat="server" 
-            ID="btnPesquisar" Text="Pesquisar Arma" onclick="btnPesquisar_Click" /></asp:DropDownList></div>
+            ID="btnPesquisar" Text="Pesquisar Arma" onclick="btnPesquisar_Click" /></div>
     </div>
     </center>
     </div>
     <br />
-    <asp:GridView runat="server" ID="gridArmaMuni" CssClass="gridArmaMuni" BackColor="WindowFrame" Width=1500px></asp:GridView>
+    <asp:GridView runat="server" ID="gridArmaMuni" CssClass="gridArmaMuni" 
+    BackColor="WindowFrame" BorderStyle="Solid" BorderColor="Black" BorderWidth="2px" 
+    Width="1500px"></asp:GridView>
     <br />
     </center>
     </form>

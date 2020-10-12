@@ -5,16 +5,17 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using RPG_Euphoria.Dados;
 
 namespace RPG_Euphoria.Negocios
 {
     public class DurabilidadeNegocios
     {
-        private Dados.DurabilidadeDAO _dao = new Dados.DurabilidadeDAO();
+        private DurabilidadeDAO _dao = new DurabilidadeDAO();
 
-        public DropDownList ListarDurabilidades(DropDownList comboBox)
+        public void ListarDurabilidades(DropDownList comboBox)
         {
-           return _dao.ListarDurabilidades(comboBox);
+           _dao.ListarDurabilidades(comboBox);
         }
 
         public GridView GridDurabilidade(GridView dataGrid)

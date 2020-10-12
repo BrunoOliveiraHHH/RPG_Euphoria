@@ -20,7 +20,7 @@ namespace RPG_Euphoria.Dados
         #endregion
 
         #region carregaComboBoxCalibre
-        public DropDownList carregaComboBoxCalibre(DropDownList dropDown)
+        public void carregaComboBoxCalibre(DropDownList dropDown)
         {
             DataTable dt = new DataTable();
             try
@@ -40,8 +40,6 @@ namespace RPG_Euphoria.Dados
                     dropDown.DataBind();
                 }
 
-                dropDown.Items.Insert(0, new ListItem("Selecione", "0"));
-
             }
             catch (Exception ex)
             {
@@ -58,8 +56,6 @@ namespace RPG_Euphoria.Dados
                     reader.Close();
                 }
             }
-
-            return dropDown;
         }
         #endregion
 

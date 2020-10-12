@@ -8,7 +8,7 @@ namespace RPG_Euphoria.Negocios
 {
     public class UsuariosNegocio
     {
-        private UsuariosDados _dao = new UsuariosDados();
+        private UsuariosDAO _dao = new UsuariosDAO();
         public int ValidaUsuarioLogado(string username, string password)
         {
             return _dao.ValidarUsuarioLogado(username, password);

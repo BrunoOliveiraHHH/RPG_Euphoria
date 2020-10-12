@@ -1228,6 +1228,10 @@
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RPG-Euphoria.Models\RPG-Euphoria.Models.csproj">
+      <Project>{28E71915-640B-4332-9A31-9174B99EBA27}</Project>
+      <Name>RPG-Euphoria.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RPG-Euphoria.Negocios\RPG-Euphoria.Negocios.csproj">
       <Project>{C8C189FF-BAD1-47DE-811E-ADB7B037B536}</Project>
       <Name>RPG-Euphoria.Negocios</Name>
