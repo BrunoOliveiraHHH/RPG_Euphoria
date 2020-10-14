@@ -39,6 +39,7 @@ namespace RPG_Euphoria.Dados
                     dropDown.DataSource = dt;
                     dropDown.DataBind();
                 }
+                dropDown.Items.Insert(0,new ListItem("Selecione", "0"));
 
             }
             catch (Exception ex)

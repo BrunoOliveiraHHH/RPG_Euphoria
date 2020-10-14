@@ -59,45 +59,7 @@ namespace RPG_Euphoria.Dados
                 }
             }
 
-        }
-
-        private void renomaValoresDataTable(DataTable dt)
-        {
-            foreach (DataRow row in dt.Rows)
-            {
-                string value = row["observacao_arma"].ToString();
-
-                if (value == "Armas Pequenas")
-                {
-                    value = "Arma de Fogo Pequena";
-                    row["observacao_arma"] = value;
-                }
-                else if (value == "Armas Grandes")
-                {
-                    value = "Arma de Fogo Grande";
-                    row["observacao_arma"] = value;
-                }
-            }
-        }
-
-        private void renomeaColunasDataTable(DataTable dt)
-        {
-            dt.Columns["ID"].ColumnName = "ID";
-            dt.Columns["nome_arma"].ColumnName = "Nome da Arma";
-            dt.Columns["custo_arma"].ColumnName = "Preço";
-            dt.Columns["dano_arma"].ColumnName = "Dado de Dano";
-            dt.Columns["tipo_de_dano_arma"].ColumnName = "Tipo de Dano";
-            dt.Columns["peso_arma"].ColumnName = "Peso";
-            dt.Columns["propriedade_arma"].ColumnName = "Propriedades";
-            dt.Columns["nome_municao"].ColumnName = "Nome Completo Municão";
-            dt.Columns["custo_municao"].ColumnName = "Preço da Munição";
-            dt.Columns["calibre_municao"].ColumnName = "Calibre";
-            dt.Columns["quantidade_municao"].ColumnName = "Quantidade por Caixa";
-            dt.Columns["observacao_municao"].ColumnName = "Informações Adicionais";
-            dt.Columns["observacao_arma"].ColumnName = "Tipo da Arma";
-            dt.Columns["durabiliade_arma"].ColumnName = "Estado de Durabilidade da Arma";
-
-        }
+        }        
         #endregion
 
         #region AdicionaArma
@@ -110,7 +72,7 @@ namespace RPG_Euphoria.Dados
                 con.Open();
 
                 #region Monta a query
-                String query = "EXECUTE [dbo].[adiciona_arma] @nome, @custo, @dano, @tipo_de_dano, @peso, @propriedade, @municao, @durabilidade, @observacao";
+                String query = parametro.ConsultarParametro("procedureAdicionarArma") + " @nome, @custo, @dano, @tipo_de_dano, @peso, @propriedade, @municao, @durabilidade, @observacao";
                 SqlCommand cmd = new SqlCommand(query, con);
 
                 #region Parametro nome
@@ -179,10 +141,10 @@ namespace RPG_Euphoria.Dados
                 cmd.Parameters.Add(municao);
                 cmd.Parameters.Add(durabilidade);
                 cmd.Parameters.Add(observacao);
- 
+
                 #endregion
 
-                
+
                 reader = cmd.ExecuteReader();
                 dt.Load(reader);
 
@@ -215,5 +177,169 @@ namespace RPG_Euphoria.Dados
 
         }
         #endregion
+
+        #region ExcluirArma
+        public int ExcluirArma(GridView gridArmaMuni, string nomeArma)
+        {
+            try
+            {
+                DataTable dtExcluir = gridArmaMuni.DataSource as DataTable;
+
+                con.Open();
+
+                String query = parametro.ConsultarParametro("procedureExcluirArma") + " @ID";
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                foreach (DataRow row in dtExcluir.Rows)
+                {
+                    if (row["Nome da Arma"].ToString() == nomeArma)
+                    {
+                        int id = int.Parse(row["ID"].ToString());                        
+                        SqlParameter ID = new SqlParameter();
+                        ID.ParameterName = "@ID";
+                        ID.Value = id;
+                        ID.SqlDbType = SqlDbType.Int;                        
+                        cmd.Parameters.Add(ID);
+                        reader = cmd.ExecuteReader();
+                        break;
+                    }
+                    else
+                    {
+                        reader = null;
+                    }
+                }
+
+                if (reader != null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region PesquisarArma
+        public GridView PesquisarArma(GridView gridArmaMuni, string nomeArma)
+        {
+            try
+            {
+                DataTable dt = gridArmaMuni.DataSource as DataTable;
+
+                con.Open();
+
+                String query = parametro.ConsultarParametro("procedurePesquisarArma") + " @ID";
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row["Nome da Arma"].ToString() == nomeArma)
+                    {
+                        int id = int.Parse(row["ID"].ToString());
+                        SqlParameter ID = new SqlParameter();
+                        ID.ParameterName = "@ID";
+                        ID.Value = id;
+                        ID.SqlDbType = SqlDbType.Int;
+                        cmd.Parameters.Add(ID);
+                        reader = cmd.ExecuteReader();
+                        break;
+                    }
+                }
+
+                
+                dt = new DataTable();
+                dt.Load(reader);
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    renomaValoresDataTable(dt);
+                    renomeaColunasDataTable(dt);
+                    gridArmaMuni.DataSource = dt;
+                    gridArmaMuni.ShowHeader = true;
+                    gridArmaMuni.DataBind();
+
+                    return gridArmaMuni;
+                }
+                else
+                {
+                    return gridArmaMuni;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
+        #endregion
+
+        private void renomaValoresDataTable(DataTable dt)
+        {
+            foreach (DataRow row in dt.Rows)
+            {
+                string value = row["observacao_arma"].ToString();
+
+                if (value == "Armas Pequenas")
+                {
+                    value = "Arma de Fogo Pequena";
+                    row["observacao_arma"] = value;
+                }
+                else if (value == "Armas Grandes")
+                {
+                    value = "Arma de Fogo Grande";
+                    row["observacao_arma"] = value;
+                }
+            }
+        }
+
+        private void renomeaColunasDataTable(DataTable dt)
+        {
+            dt.Columns["ID"].ColumnName = "ID";
+            dt.Columns["nome_arma"].ColumnName = "Nome da Arma";
+            dt.Columns["custo_arma"].ColumnName = "Preço";
+            dt.Columns["dano_arma"].ColumnName = "Dado de Dano";
+            dt.Columns["tipo_de_dano_arma"].ColumnName = "Tipo de Dano";
+            dt.Columns["peso_arma"].ColumnName = "Peso";
+            dt.Columns["propriedade_arma"].ColumnName = "Propriedades";
+            dt.Columns["nome_municao"].ColumnName = "Nome Completo Municão";
+            dt.Columns["custo_municao"].ColumnName = "Preço da Munição";
+            dt.Columns["calibre_municao"].ColumnName = "Calibre";
+            dt.Columns["quantidade_municao"].ColumnName = "Quantidade por Caixa";
+            dt.Columns["observacao_municao"].ColumnName = "Informações Adicionais";
+            dt.Columns["observacao_arma"].ColumnName = "Tipo da Arma";
+            dt.Columns["durabiliade_arma"].ColumnName = "Estado de Durabilidade da Arma";
+
+        }
     }
 }

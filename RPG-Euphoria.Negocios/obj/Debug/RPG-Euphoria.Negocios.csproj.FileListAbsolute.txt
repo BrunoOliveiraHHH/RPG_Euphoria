@@ -5,3 +5,8 @@ C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphori
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.dll
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.pdb
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.csprojResolveAssemblyReference.cache
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.dll
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria\bin\RPG-Euphoria.Negocios.pdb
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.csprojResolveAssemblyReference.cache
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.dll
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Negocios\obj\Debug\RPG-Euphoria.Negocios.pdb

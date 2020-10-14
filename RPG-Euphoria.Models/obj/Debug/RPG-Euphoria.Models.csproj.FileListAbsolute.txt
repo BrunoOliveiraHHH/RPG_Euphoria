@@ -2,3 +2,7 @@ C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphori
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Models\bin\Debug\RPG-Euphoria.Models.pdb
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Models\obj\Debug\RPG-Euphoria.Models.dll
 C:\Users\PMRecife\Documents\Visual Studio 2010\Projects\RPG-Euphoria\RPG-Euphoria.Models\obj\Debug\RPG-Euphoria.Models.pdb
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Models\bin\Debug\RPG-Euphoria.Models.dll
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Models\bin\Debug\RPG-Euphoria.Models.pdb
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Models\obj\Debug\RPG-Euphoria.Models.dll
+C:\Users\bruno.d.oliveira\Desktop\Projetos\RPG_Euphoria\RPG-Euphoria.Models\obj\Debug\RPG-Euphoria.Models.pdb
