@@ -51,7 +51,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ArmasMuni.aspx" />
+    <Content Include="Armas.aspx" />
     <Content Include="Assets\css\armaMuni.css" />
     <Content Include="Assets\css\back.jpg" />
     <Content Include="Assets\css\bootstrap.css" />
@@ -1191,6 +1191,7 @@
     <Content Include="Assets\js\value.js" />
     <Content Include="Assets\audio\sound.wav" />
     <Content Include="Menu.aspx" />
+    <Content Include="Protecao.aspx" />
     <Content Include="Usuarios\Login.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1203,12 +1204,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArmasMuni.aspx.cs">
-      <DependentUpon>ArmasMuni.aspx</DependentUpon>
+    <Compile Include="Armas.aspx.cs">
+      <DependentUpon>Armas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ArmasMuni.aspx.designer.cs">
-      <DependentUpon>ArmasMuni.aspx</DependentUpon>
+    <Compile Include="Armas.aspx.designer.cs">
+      <DependentUpon>Armas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
@@ -1218,6 +1219,13 @@
       <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protecao.aspx.cs">
+      <DependentUpon>Protecao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Protecao.aspx.designer.cs">
+      <DependentUpon>Protecao.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

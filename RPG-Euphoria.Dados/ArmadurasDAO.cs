@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Configuration;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Data;
 using RPG_Euphoria.Models;
 
 namespace RPG_Euphoria.Dados
 {
-    public class ArmaDAO
+    public class ArmadurasDAO
     {
         #region Members
         private static string cs = ConfigurationManager.ConnectionStrings["SQLConnectString"].ConnectionString;
@@ -20,14 +20,14 @@ namespace RPG_Euphoria.Dados
         #endregion
 
         #region Carrega Grid
-        public void carregaGridArmaMuni(GridView dataGrid)
+        public void carregaGridProtecao(GridView dataGrid)
         {
             DataTable dt = new DataTable();
 
             try
             {
                 con.Open();
-                String query = parametro.ConsultarParametro("procedureConsultaArmaMunicao");
+                String query = parametro.ConsultarParametro("procedureConsultaArmaduraDurabilidade");
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataAdapter da = new SqlDataAdapter();
                 reader = cmd.ExecuteReader();
@@ -59,11 +59,11 @@ namespace RPG_Euphoria.Dados
                 }
             }
 
-        }        
+        }
         #endregion
 
         #region AdicionaArma
-        public int AdicionaArma(Arma arma)
+        public int AdicionaArma(Armadura armad)
         {
             DataTable dt = new DataTable();
 
@@ -78,70 +78,12 @@ namespace RPG_Euphoria.Dados
                 #region Parametro nome
                 SqlParameter nome = new SqlParameter();
                 nome.ParameterName = "nome";
-                nome.Value = arma.nome;
+                nome.Value = armad.nome;
                 #endregion
 
-                #region Parametro custo
-                SqlParameter custo = new SqlParameter();
-                custo.ParameterName = "custo";
-                custo.Value = arma.custo;
-                custo.SqlDbType = SqlDbType.Int;
-                #endregion
-
-                #region Parametro dano
-                SqlParameter dano = new SqlParameter();
-                dano.ParameterName = "dano";
-                dano.Value = arma.dano;
-                #endregion
-
-                #region Parametro tipo_de_dano
-                SqlParameter tipoDano = new SqlParameter();
-                tipoDano.ParameterName = "tipo_de_dano";
-                tipoDano.Value = arma.tipoDeDano;
-                #endregion
-
-                #region Parametro peso
-                SqlParameter peso = new SqlParameter();
-                peso.ParameterName = "peso";
-                peso.Value = arma.peso;
-                #endregion
-
-                #region Parametro propriedade
-                SqlParameter propriedade = new SqlParameter();
-                propriedade.ParameterName = "propriedade";
-                propriedade.Value = arma.propriedades;
-                #endregion
-
-                #region Parametro municao
-                SqlParameter municao = new SqlParameter();
-                municao.ParameterName = "municao";
-                municao.Value = arma.municao;
-                municao.SqlDbType = SqlDbType.Int;
-                #endregion
-
-                #region Parametro durabilidade
-                SqlParameter durabilidade = new SqlParameter();
-                durabilidade.ParameterName = "durabilidade";
-                durabilidade.Value = arma.durabilidade;
-                durabilidade.SqlDbType = SqlDbType.Int;
-                #endregion
-
-                #region Parametro observacao
-                SqlParameter observacao = new SqlParameter();
-                observacao.ParameterName = "observacao";
-                observacao.Value = arma.observacao;
-                #endregion
+                
 
                 cmd.Parameters.Add(nome);
-                cmd.Parameters.Add(custo);
-                cmd.Parameters.Add(dano);
-                cmd.Parameters.Add(tipoDano);
-                cmd.Parameters.Add(peso);
-                cmd.Parameters.Add(propriedade);
-                cmd.Parameters.Add(municao);
-                cmd.Parameters.Add(durabilidade);
-                cmd.Parameters.Add(observacao);
-
                 #endregion
 
 
@@ -194,11 +136,11 @@ namespace RPG_Euphoria.Dados
                 {
                     if (row["Nome da Arma"].ToString() == nomeArma)
                     {
-                        int id = int.Parse(row["ID"].ToString());                        
+                        int id = int.Parse(row["ID"].ToString());
                         SqlParameter ID = new SqlParameter();
                         ID.ParameterName = "@ID";
                         ID.Value = id;
-                        ID.SqlDbType = SqlDbType.Int;                        
+                        ID.SqlDbType = SqlDbType.Int;
                         cmd.Parameters.Add(ID);
                         reader = cmd.ExecuteReader();
                         break;
@@ -265,7 +207,7 @@ namespace RPG_Euphoria.Dados
                     }
                 }
 
-                
+
                 dt = new DataTable();
                 dt.Load(reader);
 

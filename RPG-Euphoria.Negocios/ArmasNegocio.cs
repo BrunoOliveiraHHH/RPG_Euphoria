@@ -10,9 +10,11 @@ namespace RPG_Euphoria.Negocios
 {
     public class ArmasNegocio
     {
+        #region Members
         DurabilidadeNegocios _negociosDurabilidade = new DurabilidadeNegocios();
         MunicaoNegocios _negociosMunicao = new MunicaoNegocios();
         ArmaDAO _dao = new ArmaDAO();
+        #endregion
 
         #region Métodos que carregam os DropDowns e Grid da Pagina "Armas e Munição"
         public void carregarComboBoxDurabilidade(DropDownList dropDown)
@@ -91,13 +93,16 @@ namespace RPG_Euphoria.Negocios
         }
         #endregion
 
+        #region ExcluirArma
         public int ExcluirArma(GridView gridArmaMuni, string nomeArma)
         {
             ValidaCampoNome(nomeArma);
 
             return _dao.ExcluirArma(gridArmaMuni, nomeArma);
         }
+        #endregion
 
+        #region PesquisarArma
         public GridView PesquisarArma(GridView gridArmaMuni, string nomeArma)
         {
             ValidaCampoNome(nomeArma);
@@ -117,5 +122,6 @@ namespace RPG_Euphoria.Negocios
                 throw new Exception(messagem);
             }
         }
+        #endregion
     }
 }

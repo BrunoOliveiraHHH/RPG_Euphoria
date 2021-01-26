@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ArmasMuni.aspx.cs" Inherits="RPG_Euphoria.ArmasMuni" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Armas.aspx.cs" Inherits="RPG_Euphoria.ArmasMuni" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,9 +21,9 @@
                 <li class="nav-item"><asp:HyperLink ID="btnHomePage" runat="server" 
                         CssClass="nav-link" NavigateUrl="~/Menu.aspx" Visible="True">Home Page</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnArmaMuni" CssClass="nav-link" runat="server" 
-                        NavigateUrl="~/ArmasMuni.aspx" Visible="False">Armas e Munição</asp:HyperLink></li>
+                        NavigateUrl="~/Armas.aspx" Visible="False">Armas</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnArmadura" CssClass="nav-link" runat="server" 
-                        NavigateUrl="#" Visible="False">Proteção</asp:HyperLink></li>
+                        NavigateUrl="~/Protecao.aspx" Visible="False">Proteção</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnVeiculo" CssClass="nav-link" runat="server" 
                         NavigateUrl="#" Visible="False">Veículos</asp:HyperLink></li>
                 <li class="nav-item"><asp:HyperLink ID="btnItem" CssClass="nav-link" runat="server" 
@@ -59,6 +59,8 @@
     <div style="margin-left:0px; margin-top:5px; margin-bottom:15px;">
     <div class="title" style="display:inline;"><asp:Button runat="server" 
             ID="btnAdiciona" Text="Adiciona Arma" onclick="btnAdiciona_Click" /> </div>
+    <div class="title" style="display:inline;">
+        </div>
     <div class="title" style="display:inline;"><asp:Button runat="server" 
             ID="btnExcluir" Text="Excluir Arma" onclick="btnExcluir_Click" /></div>
     <div class="title" style="display:inline;"><asp:Button runat="server" 

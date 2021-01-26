@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArmaDAO.cs" />
+    <Compile Include="ArmadurasDAO.cs" />
     <Compile Include="DurabilidadeDAO.cs" />
     <Compile Include="MunicaoDAO.cs" />
     <Compile Include="ParametroDAO.cs" />

@@ -58,6 +58,7 @@ namespace RPG_Euphoria
         }
         #endregion
 
+        #region CarregaEstiloLblMensagem
         private void CarregaEstiloLblMensagem(Label lblMensagem)
         {
             lblMensagem.BackColor = Color.White;
@@ -65,7 +66,9 @@ namespace RPG_Euphoria
             lblMensagem.BorderStyle = BorderStyle.Solid;
             lblMensagem.BorderWidth = Unit.Pixel(1);
         }
+        #endregion
 
+        #region btnAdiciona_Click
         protected void btnAdiciona_Click(object sender, EventArgs e)
         {
             try
@@ -102,15 +105,17 @@ namespace RPG_Euphoria
                 CarregaEstiloLblMensagem(lblMensagem);
             }
 
-        }        
+        }
+        #endregion
 
+        #region btnExcluir_Click
         protected void btnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
                 string nome = txtBoxNome.Text.ToString();
                 DataTable dtExcluir = gridArmaMuni.DataSource as DataTable;
-                int retornoExclusão = _negocios.ExcluirArma(gridArmaMuni, txtBoxNome.Text.ToString());
+                int retornoExclusão = _negocios.ExcluirArma(gridArmaMuni, nome);
                 if (retornoExclusão > 0)
                 {
                     lblMensagem.Text = "Arma excluida com sucesso";
@@ -129,13 +134,15 @@ namespace RPG_Euphoria
                 CarregaEstiloLblMensagem(lblMensagem);
             }
         }
+        #endregion
 
+        #region btnPesquisar_Click
         protected void btnPesquisar_Click(object sender, EventArgs e)
         {
             try
             {
                 string nome = txtBoxNome.Text.ToString();                   
-                gridArmaMuni = _negocios.PesquisarArma(gridArmaMuni, txtBoxNome.Text.ToString());
+                gridArmaMuni = _negocios.PesquisarArma(gridArmaMuni, nome);
                 DataTable dt = gridArmaMuni.DataSource as DataTable;
                 if (dt.Rows.Count != 1)
                 {
@@ -149,5 +156,6 @@ namespace RPG_Euphoria
                 CarregaEstiloLblMensagem(lblMensagem);
             }
         }
+        #endregion
     }
 }
