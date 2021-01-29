@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ReferencePath>C:\RPG-Euphoria\RPG-Euphoria\bin\</ReferencePath>
     <ProjectView>ProjectFiles</ProjectView>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

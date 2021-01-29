@@ -62,8 +62,8 @@ namespace RPG_Euphoria.Dados
         }
         #endregion
 
-        #region AdicionaArma
-        public int AdicionaArma(Armadura armad)
+        #region AdicionaArmadura
+        public int AdicionaArmadura(Armadura armad)
         {
             DataTable dt = new DataTable();
 
@@ -72,16 +72,51 @@ namespace RPG_Euphoria.Dados
                 con.Open();
 
                 #region Monta a query
-                String query = parametro.ConsultarParametro("procedureAdicionarArma") + " @nome, @custo, @dano, @tipo_de_dano, @peso, @propriedade, @municao, @durabilidade, @observacao";
+                String query = parametro.ConsultarParametro("procedureAdicionarArma") + " @nome ,@tipo ,@custo ,@ca ,@furtv ,@forca ,@peso ,@durabilidade ,@observacao";
                 SqlCommand cmd = new SqlCommand(query, con);
 
-                #region Parametro nome
+                #region Insere os parametros
                 SqlParameter nome = new SqlParameter();
                 nome.ParameterName = "nome";
                 nome.Value = armad.nome;
+
+                SqlParameter tipo = new SqlParameter();
+                tipo.ParameterName = "tipo";
+                tipo.SqlDbType = SqlDbType.Int;
+                tipo.Value = armad.tipo;
+
+                SqlParameter custo = new SqlParameter();
+                custo.ParameterName = "custo";
+                custo.SqlDbType = SqlDbType.Int;
+                custo.Value = armad.custo;
+
+                SqlParameter ca = new SqlParameter();
+                ca.ParameterName = "ca";
+                ca.Value = armad.ca;
+
+                SqlParameter furtv = new SqlParameter();
+                furtv.ParameterName = "furtv";
+                furtv.Value = armad.furtv;
+
+                SqlParameter peso = new SqlParameter();
+                peso.ParameterName = "peso";
+                peso.Value = armad.peso;
+
+                SqlParameter forca = new SqlParameter();
+                forca.ParameterName = "forca";
+                forca.Value = armad.forca;
+
+                SqlParameter durabilidade = new SqlParameter();
+                durabilidade.ParameterName = "durabilidade";
+                durabilidade.SqlDbType = SqlDbType.Int;
+                durabilidade.Value = armad.durabilidade;
+
+                SqlParameter observacao = new SqlParameter();
+                observacao.ParameterName = "observacao";
+                observacao.Value = armad.observacao;
                 #endregion
 
-                
+
 
                 cmd.Parameters.Add(nome);
                 #endregion
@@ -120,16 +155,16 @@ namespace RPG_Euphoria.Dados
         }
         #endregion
 
-        #region ExcluirArma
-        public int ExcluirArma(GridView gridArmaMuni, string nomeArma)
+        #region ExcluirArmadura
+        public int ExcluirArmadura(GridView grid, string nomeArma)
         {
             try
             {
-                DataTable dtExcluir = gridArmaMuni.DataSource as DataTable;
+                DataTable dtExcluir = grid.DataSource as DataTable;
 
                 con.Open();
 
-                String query = parametro.ConsultarParametro("procedureExcluirArma") + " @ID";
+                String query = parametro.ConsultarParametro("procedureExcluirArmadura") + " @ID";
                 SqlCommand cmd = new SqlCommand(query, con);
 
                 foreach (DataRow row in dtExcluir.Rows)
@@ -181,11 +216,11 @@ namespace RPG_Euphoria.Dados
         #endregion
 
         #region PesquisarArma
-        public GridView PesquisarArma(GridView gridArmaMuni, string nomeArma)
+        public GridView PesquisarArma(GridView grid, string nomeArma)
         {
             try
             {
-                DataTable dt = gridArmaMuni.DataSource as DataTable;
+                DataTable dt = grid.DataSource as DataTable;
 
                 con.Open();
 
@@ -215,15 +250,15 @@ namespace RPG_Euphoria.Dados
                 {
                     renomaValoresDataTable(dt);
                     renomeaColunasDataTable(dt);
-                    gridArmaMuni.DataSource = dt;
-                    gridArmaMuni.ShowHeader = true;
-                    gridArmaMuni.DataBind();
+                    grid.DataSource = dt;
+                    grid.ShowHeader = true;
+                    grid.DataBind();
 
-                    return gridArmaMuni;
+                    return grid;
                 }
                 else
                 {
-                    return gridArmaMuni;
+                    return grid;
                 }
 
 
