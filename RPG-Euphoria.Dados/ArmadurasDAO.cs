@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Configuration;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Data;
 using RPG_Euphoria.Models;
 
 namespace RPG_Euphoria.Dados
 {
-    public class ArmaDAO
+    public class ArmadurasDAO
     {
         #region Members
         private static string cs = ConfigurationManager.ConnectionStrings["SQLConnectString"].ConnectionString;
@@ -20,14 +20,14 @@ namespace RPG_Euphoria.Dados
         #endregion
 
         #region Carrega Grid
-        public void carregaGridArmaMuni(GridView dataGrid)
+        public void carregaGridProtecao(GridView dataGrid)
         {
             DataTable dt = new DataTable();
 
             try
             {
                 con.Open();
-                String query = parametro.ConsultarParametro("procedureConsultaArmaMunicao");
+                String query = parametro.ConsultarParametro("procedureConsultaArmaduraDurabilidade");
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataAdapter da = new SqlDataAdapter();
                 reader = cmd.ExecuteReader();
@@ -59,11 +59,11 @@ namespace RPG_Euphoria.Dados
                 }
             }
 
-        }        
+        }
         #endregion
 
-        #region AdicionaArma
-        public int AdicionaArma(Arma arma)
+        #region AdicionaArmadura
+        public int AdicionaArmadura(Armadura armad)
         {
             DataTable dt = new DataTable();
 
@@ -72,76 +72,53 @@ namespace RPG_Euphoria.Dados
                 con.Open();
 
                 #region Monta a query
-                String query = parametro.ConsultarParametro("procedureAdicionarArma") + " @nome, @custo, @dano, @tipo_de_dano, @peso, @propriedade, @municao, @durabilidade, @observacao";
+                String query = parametro.ConsultarParametro("procedureAdicionarArma") + " @nome ,@tipo ,@custo ,@ca ,@furtv ,@forca ,@peso ,@durabilidade ,@observacao";
                 SqlCommand cmd = new SqlCommand(query, con);
 
-                #region Parametro nome
+                #region Insere os parametros
                 SqlParameter nome = new SqlParameter();
                 nome.ParameterName = "nome";
-                nome.Value = arma.nome;
-                #endregion
+                nome.Value = armad.nome;
 
-                #region Parametro custo
+                SqlParameter tipo = new SqlParameter();
+                tipo.ParameterName = "tipo";
+                tipo.SqlDbType = SqlDbType.Int;
+                tipo.Value = armad.tipo;
+
                 SqlParameter custo = new SqlParameter();
                 custo.ParameterName = "custo";
-                custo.Value = arma.custo;
                 custo.SqlDbType = SqlDbType.Int;
-                #endregion
+                custo.Value = armad.custo;
 
-                #region Parametro dano
-                SqlParameter dano = new SqlParameter();
-                dano.ParameterName = "dano";
-                dano.Value = arma.dano;
-                #endregion
+                SqlParameter ca = new SqlParameter();
+                ca.ParameterName = "ca";
+                ca.Value = armad.ca;
 
-                #region Parametro tipo_de_dano
-                SqlParameter tipoDano = new SqlParameter();
-                tipoDano.ParameterName = "tipo_de_dano";
-                tipoDano.Value = arma.tipoDeDano;
-                #endregion
+                SqlParameter furtv = new SqlParameter();
+                furtv.ParameterName = "furtv";
+                furtv.Value = armad.furtv;
 
-                #region Parametro peso
                 SqlParameter peso = new SqlParameter();
                 peso.ParameterName = "peso";
-                peso.Value = arma.peso;
-                #endregion
+                peso.Value = armad.peso;
 
-                #region Parametro propriedade
-                SqlParameter propriedade = new SqlParameter();
-                propriedade.ParameterName = "propriedade";
-                propriedade.Value = arma.propriedades;
-                #endregion
+                SqlParameter forca = new SqlParameter();
+                forca.ParameterName = "forca";
+                forca.Value = armad.forca;
 
-                #region Parametro municao
-                SqlParameter municao = new SqlParameter();
-                municao.ParameterName = "municao";
-                municao.Value = arma.municao;
-                municao.SqlDbType = SqlDbType.Int;
-                #endregion
-
-                #region Parametro durabilidade
                 SqlParameter durabilidade = new SqlParameter();
                 durabilidade.ParameterName = "durabilidade";
-                durabilidade.Value = arma.durabilidade;
                 durabilidade.SqlDbType = SqlDbType.Int;
-                #endregion
+                durabilidade.Value = armad.durabilidade;
 
-                #region Parametro observacao
                 SqlParameter observacao = new SqlParameter();
                 observacao.ParameterName = "observacao";
-                observacao.Value = arma.observacao;
+                observacao.Value = armad.observacao;
                 #endregion
 
-                cmd.Parameters.Add(nome);
-                cmd.Parameters.Add(custo);
-                cmd.Parameters.Add(dano);
-                cmd.Parameters.Add(tipoDano);
-                cmd.Parameters.Add(peso);
-                cmd.Parameters.Add(propriedade);
-                cmd.Parameters.Add(municao);
-                cmd.Parameters.Add(durabilidade);
-                cmd.Parameters.Add(observacao);
 
+
+                cmd.Parameters.Add(nome);
                 #endregion
 
 
@@ -178,27 +155,27 @@ namespace RPG_Euphoria.Dados
         }
         #endregion
 
-        #region ExcluirArma
-        public int ExcluirArma(GridView gridArmaMuni, string nomeArma)
+        #region ExcluirArmadura
+        public int ExcluirArmadura(GridView grid, string nomeArma)
         {
             try
             {
-                DataTable dtExcluir = gridArmaMuni.DataSource as DataTable;
+                DataTable dtExcluir = grid.DataSource as DataTable;
 
                 con.Open();
 
-                String query = parametro.ConsultarParametro("procedureExcluirArma") + " @ID";
+                String query = parametro.ConsultarParametro("procedureExcluirArmadura") + " @ID";
                 SqlCommand cmd = new SqlCommand(query, con);
 
                 foreach (DataRow row in dtExcluir.Rows)
                 {
                     if (row["Nome da Arma"].ToString() == nomeArma)
                     {
-                        int id = int.Parse(row["ID"].ToString());                        
+                        int id = int.Parse(row["ID"].ToString());
                         SqlParameter ID = new SqlParameter();
                         ID.ParameterName = "@ID";
                         ID.Value = id;
-                        ID.SqlDbType = SqlDbType.Int;                        
+                        ID.SqlDbType = SqlDbType.Int;
                         cmd.Parameters.Add(ID);
                         reader = cmd.ExecuteReader();
                         break;
@@ -239,11 +216,11 @@ namespace RPG_Euphoria.Dados
         #endregion
 
         #region PesquisarArma
-        public GridView PesquisarArma(GridView gridArmaMuni, string nomeArma)
+        public GridView PesquisarArma(GridView grid, string nomeArma)
         {
             try
             {
-                DataTable dt = gridArmaMuni.DataSource as DataTable;
+                DataTable dt = grid.DataSource as DataTable;
 
                 con.Open();
 
@@ -265,7 +242,7 @@ namespace RPG_Euphoria.Dados
                     }
                 }
 
-                
+
                 dt = new DataTable();
                 dt.Load(reader);
 
@@ -273,15 +250,15 @@ namespace RPG_Euphoria.Dados
                 {
                     renomaValoresDataTable(dt);
                     renomeaColunasDataTable(dt);
-                    gridArmaMuni.DataSource = dt;
-                    gridArmaMuni.ShowHeader = true;
-                    gridArmaMuni.DataBind();
+                    grid.DataSource = dt;
+                    grid.ShowHeader = true;
+                    grid.DataBind();
 
-                    return gridArmaMuni;
+                    return grid;
                 }
                 else
                 {
-                    return gridArmaMuni;
+                    return grid;
                 }
 
 

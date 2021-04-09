@@ -36,6 +36,7 @@ namespace RPG_Euphoria.Dados
                     comboBox.DataSource = dt;
                     comboBox.DataBind();
                 }
+                comboBox.Items.Insert(0, new ListItem("Selecione", "0"));
             }
             catch (Exception ex)
             {

@@ -10,9 +10,11 @@ namespace RPG_Euphoria.Negocios
 {
     public class ArmasNegocio
     {
+        #region Members
         DurabilidadeNegocios _negociosDurabilidade = new DurabilidadeNegocios();
         MunicaoNegocios _negociosMunicao = new MunicaoNegocios();
         ArmaDAO _dao = new ArmaDAO();
+        #endregion
 
         #region Métodos que carregam os DropDowns e Grid da Pagina "Armas e Munição"
         public void carregarComboBoxDurabilidade(DropDownList dropDown)
@@ -27,34 +29,28 @@ namespace RPG_Euphoria.Negocios
         public void carregaDropDownTipoArma(DropDownList dropDown)
         {
             dropDown.Items.Insert(0, new ListItem("Selecione", "Vazio"));
-            dropDown.Items.Insert(1, new ListItem("Arma Branca", "Arma Branca"));
-            dropDown.Items.Insert(2, new ListItem("Arma de Fogo Pequena", "Arma Pequena"));
-            dropDown.Items.Insert(3, new ListItem("Arma de Fogo Grande", "Arma Grande"));
+            dropDown.Items.Insert(1, new ListItem("Arma Branca", "Armas Brancas"));
+            dropDown.Items.Insert(2, new ListItem("Arma de Fogo Pequena", "Armas Pequenas"));
+            dropDown.Items.Insert(3, new ListItem("Arma de Fogo Grande", "Armas Grandes"));
             dropDown.Items.Insert(4, new ListItem("Explosivos", "Explosivos"));
         }
 
         public void carregaGridView(GridView dataGrid)
         {
-             _dao.carregaGridArmaMuni(dataGrid);
+            _dao.carregaGridArmaMuni(dataGrid);
         }
         #endregion
 
+        #region AdicionaArma
         public int AdicionaArma(Arma arma)
         {
-                string retornoValidacao = ValidaCampoArma(arma);
+            ValidaCampoArma(arma);
 
-                if (retornoValidacao.Length <= 0)
-                {
-                    return _dao.AdicionaArma(arma);
-                }
-                else
-                {
-                    return 0;
-                }
-            
+            return _dao.AdicionaArma(arma);
+
         }
 
-        private string ValidaCampoArma(Arma arma)
+        private void ValidaCampoArma(Arma arma)
         {
             string messagem = "";
             if (String.IsNullOrEmpty(arma.nome))
@@ -67,7 +63,7 @@ namespace RPG_Euphoria.Negocios
             }
             else if (String.IsNullOrEmpty(arma.tipoDeDano))
             {
-                messagem +=" Campo 'Tipo de Dano' não informado, favor preencher";
+                messagem += " Campo 'Tipo de Dano' não informado, favor preencher";
             }
             else if (String.IsNullOrEmpty(arma.propriedades))
             {
@@ -90,8 +86,42 @@ namespace RPG_Euphoria.Negocios
                 messagem += " Campo 'Tipo de Arma' não informado, favor preencher";
             }
 
-            return messagem;
+            if (!String.IsNullOrEmpty(messagem))
+            {
+                throw new Exception(messagem);
+            }
+        }
+        #endregion
+
+        #region ExcluirArma
+        public int ExcluirArma(GridView gridArmaMuni, string nomeArma)
+        {
+            ValidaCampoNome(nomeArma);
+
+            return _dao.ExcluirArma(gridArmaMuni, nomeArma);
+        }
+        #endregion
+
+        #region PesquisarArma
+        public GridView PesquisarArma(GridView gridArmaMuni, string nomeArma)
+        {
+            ValidaCampoNome(nomeArma);
+
+            return _dao.PesquisarArma(gridArmaMuni, nomeArma);
         }
 
+        private void ValidaCampoNome(string nomeArma)
+        {
+            string messagem = "";
+            if (String.IsNullOrEmpty(nomeArma))
+            {
+                messagem = "Campo 'Nome' não informado, favor preencher";
+            }
+            if (!String.IsNullOrEmpty(messagem))
+            {
+                throw new Exception(messagem);
+            }
+        }
+        #endregion
     }
 }
